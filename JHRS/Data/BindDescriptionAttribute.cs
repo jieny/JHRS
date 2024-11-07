@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
 
 namespace JHRS.Data
 {
@@ -41,12 +35,12 @@ namespace JHRS.Data
         /// <summary>
         /// 列宽
         /// </summary>
-        public DataGridLength Width { get; set; }
+        public int Width { get; set; }
 
         /// <summary>
         /// 列宽ByGrid
         /// </summary>
-        public GridLength CloumnWidth { get; set; }
+        public int CloumnWidth { get; set; }
 
 
         /// <summary>
@@ -63,10 +57,10 @@ namespace JHRS.Data
             DisplayIndex = displayIndex;
             ResourceKey = resourceKey;
             ShowAs = showAs;
-            var convert = new DataGridLengthConverter();
-            Width = (DataGridLength)convert.ConvertFrom(width);
-            var gridCOnvert = new GridLengthConverter();
-            CloumnWidth = (GridLength)gridCOnvert.ConvertFrom(width);
+            //var convert = new DataGridLengthConverter();
+            //Width = (DataGridLength)convert.ConvertFrom(width);
+            //var gridCOnvert = new GridLengthConverter();
+            //CloumnWidth = (GridLength)gridCOnvert.ConvertFrom(width);
 
             if (showAs == ShowScheme.自定义 && string.IsNullOrWhiteSpace(resourceKey))
                 throw new ArgumentException($"自定义列时需要指定{nameof(resourceKey)}参数！");
