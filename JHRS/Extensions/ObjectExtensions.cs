@@ -164,13 +164,12 @@ namespace JHRS.Extensions
             {
                 throw new NotSupportedException("当前对象未标记特性“{0}”，无法进行DeepClone操作".FormatWith(typeof(SerializableAttribute)));
             }
-            BinaryFormatter formatter = new BinaryFormatter();
-            using (MemoryStream ms = new MemoryStream())
-            {
-                formatter.Serialize(ms, obj);
-                ms.Seek(0L, SeekOrigin.Begin);
-                return (T)formatter.Deserialize(ms);
-            }
+
+            // 将对象序列化为字节数组
+            byte[] serializedData = JsonSerializer.SerializeToUtf8Bytes(obj);
+
+            // 从字节数组反序列化回对象
+            return JsonSerializer.Deserialize<T>(serializedData);
         }
 
         #endregion

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
@@ -51,13 +52,8 @@ namespace JHRS.Data
         public static byte[] ToBinary(this object data)
         {
             data.CheckNotNull("data");
-            using (MemoryStream ms = new MemoryStream())
-            {
-                BinaryFormatter formatter = new BinaryFormatter();
-                formatter.Serialize(ms, data);
-                ms.Seek(0, 0);
-                return ms.ToArray();
-            }
+
+            return JsonSerializer.SerializeToUtf8Bytes(data);
         }
 
         /// <summary>
@@ -66,11 +62,8 @@ namespace JHRS.Data
         public static T FromBinary<T>(this byte[] bytes)
         {
             bytes.CheckNotNullOrEmpty("bytes");
-            using (MemoryStream ms = new MemoryStream(bytes))
-            {
-                BinaryFormatter formatter = new BinaryFormatter();
-                return (T)formatter.Deserialize(ms);
-            }
+
+            return JsonSerializer.Deserialize<T>(bytes);
         }
 
         /// <summary>
@@ -80,10 +73,10 @@ namespace JHRS.Data
         {
             fileName.CheckNotNull("fileName");
             data.CheckNotNull("data");
+
             using (FileStream fs = new FileStream(fileName, FileMode.Create))
             {
-                BinaryFormatter formatter = new BinaryFormatter();
-                formatter.Serialize(fs, data);
+                JsonSerializer.Serialize(fs, data);
             }
         }
 
@@ -93,10 +86,10 @@ namespace JHRS.Data
         public static T FromBinaryFile<T>(this string fileName)
         {
             fileName.CheckFileExists("fileName");
+
             using (FileStream fs = new FileStream(fileName, FileMode.Open))
             {
-                BinaryFormatter formatter = new BinaryFormatter();
-                return (T)formatter.Deserialize(fs);
+                return JsonSerializer.Deserialize<T>(fs);
             }
         }
 
