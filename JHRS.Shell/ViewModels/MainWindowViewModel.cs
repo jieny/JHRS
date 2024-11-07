@@ -4,7 +4,7 @@ using JHRS.Core.Modules;
 using JHRS.Core.ViewModels;
 using Prism.Commands;
 using Prism.Ioc;
-using Prism.Services.Dialogs;
+using Prism.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

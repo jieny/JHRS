@@ -1,5 +1,4 @@
-﻿using CommonServiceLocator;
-using JHRS.Core.Events;
+﻿using JHRS.Core.Events;
 using JHRS.Core.Modules;
 using Prism.Events;
 using System.Linq;
@@ -17,8 +16,13 @@ namespace JHRS.Shell.Views
         public MainWindow()
         {
             InitializeComponent();
+        }
 
-            PageEvent pageEvent = ServiceLocator.Current.TryResolve<IEventAggregator>().GetEvent<PageEvent>();
+        public MainWindow(IEventAggregator eventAggregator)
+        {
+            InitializeComponent();
+
+            PageEvent pageEvent = eventAggregator.GetEvent<PageEvent>();
             pageEvent.Subscribe((p) =>
             {
                 MenuEntity menu = p.Menu;

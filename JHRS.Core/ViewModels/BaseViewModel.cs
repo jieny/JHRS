@@ -7,12 +7,12 @@ using JHRS.Filter;
 using JHRS.Http;
 using JHRS.Json;
 using JHRS.Reflection;
+using Prism.Dialogs;
 using Prism.Events;
 using Prism.Ioc;
-using Prism.Logging;
 using Prism.Mvvm;
-using Prism.Regions;
-using Prism.Services.Dialogs;
+using Prism.Navigation;
+using Prism.Navigation.Regions;
 using System;
 using System.Configuration;
 using System.Linq;
@@ -38,7 +38,7 @@ namespace JHRS.Core.ViewModels
 			Container = container;
 			EventAggregator = container.Resolve<IEventAggregator>();
 			this._dialogService = container.Resolve<IDialogService>();
-			Logger = container.Resolve<ILoggerFacade>();
+			//Logger = container.Resolve<ILogger<BaseViewModel>>();
 			this._regionManager = container.Resolve<IRegionManager>();
 		}
 
@@ -55,7 +55,7 @@ namespace JHRS.Core.ViewModels
 		/// <summary>
 		/// 日志对象
 		/// </summary>
-		protected ILoggerFacade Logger { get; }
+		//protected ILogger<BaseViewModel> Logger { get; }
 
 		/// <summary>
 		/// 事件汇总器，用于发布或订阅事件

@@ -1,5 +1,4 @@
 ﻿using JHRS.Core.Apis;
-using JHRS.Core.Enums;
 using JHRS.Core.Identity;
 using JHRS.Core.Models;
 using JHRS.Core.ViewModels;
@@ -11,12 +10,8 @@ using Prism.Commands;
 using Prism.Ioc;
 using Refit;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace JHRS.Shell.ViewModels.Login

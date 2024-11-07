@@ -1,14 +1,9 @@
 ﻿using AspectInjector.Broker;
-using CommonServiceLocator;
-using JHRS.Core.Events;
 using JHRS.Core.Extensions;
-using Prism.Events;
 using System;
-using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace KWT.Core.Aop
 {
@@ -64,7 +59,7 @@ namespace KWT.Core.Aop
             }
             finally
             {
-                ServiceLocator.Current.TryResolve<IEventAggregator>().GetEvent<ConstrolStateEvent>().Publish(new ControlState { IsEnabled = true });
+                //ServiceLocator.Current.TryResolve<IEventAggregator>().GetEvent<ConstrolStateEvent>().Publish(new ControlState { IsEnabled = true });
                 MaskExtensions.Close();
             }
         }
@@ -84,7 +79,7 @@ namespace KWT.Core.Aop
             }
             finally
             {
-                ServiceLocator.Current.TryResolve<IEventAggregator>().GetEvent<ConstrolStateEvent>().Publish(new ControlState { IsEnabled = true });
+                //ServiceLocator.Current.TryResolve<IEventAggregator>().GetEvent<ConstrolStateEvent>().Publish(new ControlState { IsEnabled = true });
                 MaskExtensions.Close();
             }
         }
@@ -104,7 +99,7 @@ namespace KWT.Core.Aop
             }
             finally
             {
-                ServiceLocator.Current.TryResolve<IEventAggregator>().GetEvent<ConstrolStateEvent>().Publish(new ControlState { IsEnabled = true });
+                //ServiceLocator.Current.TryResolve<IEventAggregator>().GetEvent<ConstrolStateEvent>().Publish(new ControlState { IsEnabled = true });
                 MaskExtensions.Close();
             }
         }
@@ -124,7 +119,7 @@ namespace KWT.Core.Aop
             }
             finally
             {
-                ServiceLocator.Current.TryResolve<IEventAggregator>().GetEvent<ConstrolStateEvent>().Publish(new ControlState { IsEnabled = true });
+                //ServiceLocator.Current.TryResolve<IEventAggregator>().GetEvent<ConstrolStateEvent>().Publish(new ControlState { IsEnabled = true });
                 MaskExtensions.Close();
             }
         }

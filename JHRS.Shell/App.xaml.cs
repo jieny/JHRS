@@ -1,19 +1,20 @@
-﻿using JHRS.Core.Modules;
+﻿using DryIoc;
+using JHRS.Core.Modules;
 using JHRS.Reflection;
 using JHRS.Shell.ViewModels.Dialogs;
 using JHRS.Shell.Views.Dialogs;
 using JHRS.Shell.Views.Login;
+using Prism.Container.DryIoc;
+using Prism.Dialogs;
+using Prism.DryIoc;
 using Prism.Ioc;
 using Prism.Modularity;
-using Prism.Regions;
-using Prism.Services.Dialogs;
-using Prism.Unity;
+using Prism.Navigation.Regions;
 using System;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
-using Unity;
 
 namespace JHRS.Shell
 {
@@ -32,12 +33,15 @@ namespace JHRS.Shell
 			return Container.Resolve<LoginWindow>();
 		}
 
-		protected override void RegisterTypes(IContainerRegistry containerRegistry)
-		{
+        protected override void RegisterTypes(IContainerRegistry containerRegistry)
+        {
 			containerRegistry.RegisterSingleton<PageManager>();
 			containerRegistry.RegisterSingleton<UserControlManager>();
 			Type[] pages = AppDomainAllAssemblyFinder.FindAll<Page>();
-			var pageManager = containerRegistry.GetContainer().Resolve<PageManager>();
+
+            var dryIocContainer = containerRegistry.GetContainer();
+            
+            var pageManager = dryIocContainer.Resolve<PageManager>();
 			Type[] array = pages;
 			foreach (Type item in array)
 			{

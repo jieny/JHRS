@@ -1,6 +1,6 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
-using Prism.Services.Dialogs;
+using Prism.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,11 +56,11 @@ namespace JHRS.Shell.ViewModels.Dialogs
             RaiseRequestClose(new DialogResult(result));
         });
 
-        public event Action<IDialogResult> RequestClose;
+        public DialogCloseListener RequestClose { get; } = new DialogCloseListener();
 
         public virtual void RaiseRequestClose(IDialogResult dialogResult)
         {
-            this.RequestClose?.Invoke(dialogResult);
+            this.RequestClose.Invoke(dialogResult);
         }
 
         public bool CanCloseDialog()

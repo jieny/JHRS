@@ -2,8 +2,8 @@
 using JHRS.Extensions;
 using JHRS.Filter;
 using Prism.Commands;
+using Prism.Dialogs;
 using Prism.Ioc;
-using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

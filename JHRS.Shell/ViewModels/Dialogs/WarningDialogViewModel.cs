@@ -1,6 +1,6 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
-using Prism.Services.Dialogs;
+using Prism.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,15 +11,15 @@ namespace JHRS.Shell.ViewModels.Dialogs
 {
 	public class WarningDialogViewModel : BindableBase, IDialogAware
 	{
-		#region Fields
+        #region Fields
 
-		public event Action<IDialogResult> RequestClose;
+        public DialogCloseListener RequestClose { get; } = new DialogCloseListener();
 
-		#endregion
+        #endregion
 
-		#region Properties
+        #region Properties
 
-		private string _title = "未設置標題";
+        private string _title = "未設置標題";
 		public string Title
 		{
 			get { return _title; }
@@ -57,7 +57,7 @@ namespace JHRS.Shell.ViewModels.Dialogs
 		public async virtual Task RaiseRequestClose(IDialogResult dialogResult)
 		{
 			await Task.Delay(500);
-			RequestClose?.Invoke(dialogResult);
+			RequestClose.Invoke(dialogResult);
 		}
 
 

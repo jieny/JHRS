@@ -1,5 +1,5 @@
-﻿using Prism.Events;
-using Prism.Services.Dialogs;
+﻿using Prism.Dialogs;
+using Prism.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;

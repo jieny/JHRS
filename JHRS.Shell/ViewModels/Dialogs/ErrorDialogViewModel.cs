@@ -1,6 +1,6 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
-using Prism.Services.Dialogs;
+using Prism.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,8 +14,8 @@ namespace JHRS.Shell.ViewModels.Dialogs
 	/// </summary>
 	public class ErrorDialogViewModel : BindableBase, IDialogAware
 	{
-		public event Action<IDialogResult> RequestClose;
-		private string _title = "未設置標題";
+        public DialogCloseListener RequestClose { get; } = new DialogCloseListener();
+        private string _title = "未設置標題";
 
 		public string Title
 		{
@@ -41,7 +41,7 @@ namespace JHRS.Shell.ViewModels.Dialogs
 		public async virtual Task RaiseRequestClose(IDialogResult dialogResult)
 		{
 			await Task.Delay(1000);
-			RequestClose?.Invoke(dialogResult);
+			RequestClose.Invoke(dialogResult);
 		}
 
 

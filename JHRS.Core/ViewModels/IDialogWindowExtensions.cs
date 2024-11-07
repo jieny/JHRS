@@ -1,6 +1,6 @@
 ﻿using CommonServiceLocator;
 using Prism.Common;
-using Prism.Services.Dialogs;
+using Prism.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -43,7 +43,7 @@ namespace JHRS.Core.ViewModels
             loadedHandler = (o, e) =>
             {
                 dialogWindow.Loaded -= loadedHandler;
-                dialogWindow.GetDialogViewModel().RequestClose += requestCloseHandler;
+                //dialogWindow.GetDialogViewModel().RequestClose += requestCloseHandler;
             };
             dialogWindow.Loaded += loadedHandler;
 
@@ -60,7 +60,7 @@ namespace JHRS.Core.ViewModels
             {
                 dialogWindow.Closed -= closedHandler;
                 dialogWindow.Closing -= closingHandler;
-                dialogWindow.GetDialogViewModel().RequestClose -= requestCloseHandler;
+                //dialogWindow.GetDialogViewModel().RequestClose -= requestCloseHandler;
 
                 dialogWindow.GetDialogViewModel().OnDialogClosed();
 
