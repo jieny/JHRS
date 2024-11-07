@@ -123,13 +123,13 @@ namespace JHRS.Extensions
         /// <param name="source">要操作的源</param>
         /// <param name="keySelector">重复数据筛选条件</param>
         /// <returns>不重复元素的集合</returns>
-        public static IEnumerable<T> DistinctBy<T, TKey>(this IEnumerable<T> source, Func<T, TKey> keySelector)
-        {
-            keySelector.CheckNotNull("keySelector");
-            source = source as IList<T> ?? source.ToList();
+        //public static IEnumerable<T> DistinctBy<T, TKey>(this IEnumerable<T> source, Func<T, TKey> keySelector)
+        //{
+        //    keySelector.CheckNotNull("keySelector");
+        //    source = source as IList<T> ?? source.ToList();
 
-            return source.GroupBy(keySelector).Select(group => group.First());
-        }
+        //    return source.GroupBy(keySelector).Select(group => group.First());
+        //}
 
         /// <summary>
         /// 把<see cref="IEnumerable{T}"/>集合按指定字段与排序方式进行排序
